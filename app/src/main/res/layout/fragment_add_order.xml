@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+
+	<include
+		layout="@layout/toolbar_default_white"
+		android:id="@+id/toolbar"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"/>
+
+	<EditText
+		android:id="@+id/etOrderName"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginEnd="16dp"
+		android:layout_marginTop="8dp"
+		android:background="@drawable/button_units_not_checked"
+		android:paddingBottom="4dp"
+		android:paddingEnd="8dp"
+		android:paddingStart="8dp"
+		android:paddingTop="4dp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.0"
+		app:layout_constraintStart_toStartOf="@+id/textView5"
+		app:layout_constraintTop_toBottomOf="@+id/textView5"/>
+
+	<TextView
+		android:id="@+id/textView4"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="24dp"
+		android:text="@string/units"
+		android:textColor="@color/black_color"
+		app:layout_constraintStart_toStartOf="@+id/etOrderName"
+		app:layout_constraintTop_toBottomOf="@+id/etOrderName"/>
+
+	<RadioGroup
+		android:id="@+id/rgUnits"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginEnd="16dp"
+		android:layout_marginStart="16dp"
+		android:layout_marginTop="8dp"
+		android:gravity="fill"
+		android:orientation="horizontal"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+		<RadioButton
+			android:id="@+id/rbKg"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:checked="true"
+			android:text="@string/kg"
+			style="@style/AppTheme.RadioButton"/>
+
+		<Space
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"/>
+
+		<RadioButton
+			android:id="@+id/rbGrams"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="@dimen/text_size_small_16"
+			android:text="@string/grams"
+
+			style="@style/AppTheme.RadioButton"/>
+
+		<Space
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"/>
+
+		<RadioButton
+			android:id="@+id/rbCase"
+			android:layout_width="wrap_content"
+
+			android:layout_height="wrap_content"
+			android:layout_marginStart="@dimen/text_size_small_16"
+			android:text="@string/rbCase"
+			style="@style/AppTheme.RadioButton"/>
+
+		<Space
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"/>
+
+		<RadioButton
+			android:id="@+id/rbCustom"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+
+			android:text="@string/custom"
+			style="@style/AppTheme.RadioButton"/>
+
+
+	</RadioGroup>
+
+	<TextView
+		android:id="@+id/textView5"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
+		android:layout_marginTop="32dp"
+		android:text="@string/item_name"
+		android:textColor="@color/black_text_color"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/toolbar"/>
+
+
+	<EditText
+		android:id="@+id/etCustomUnit"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginEnd="16dp"
+		android:layout_marginTop="24dp"
+		android:background="@drawable/button_units_not_checked"
+		android:hint="@string/custom_unit"
+		android:paddingBottom="4dp"
+		android:paddingEnd="8dp"
+		android:paddingStart="8dp"
+		android:paddingTop="4dp"
+		android:visibility="gone"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.0"
+		app:layout_constraintStart_toStartOf="@+id/textView5"
+		app:layout_constraintTop_toBottomOf="@+id/rgUnits"/>
+
+	<Button
+		android:id="@+id/btnAddItem"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="32dp"
+		android:layout_marginEnd="32dp"
+		android:layout_marginStart="32dp"
+		android:layout_marginTop="8dp"
+		android:text="@string/add_item"
+		android:textStyle="bold"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		style="@style/AppTheme.RedButton"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

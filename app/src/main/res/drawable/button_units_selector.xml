@@ -1,0 +1,6 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <item android:state_checked="true" android:drawable="@drawable/button_units_checked" />
+
+    <item  android:drawable="@drawable/button_units_not_checked" />
+</selector>

@@ -1,0 +1,15 @@
+<resources>
+	<string name="app_name">OrderApp</string>
+	<string name="custom_unit">Custom Unit</string>
+	<string name="item_name">Item Name</string>
+	<string name="custom">Custom</string>
+	<string name="rbCase">Case</string>
+	<string name="grams">Grams</string>
+	<string name="kg">Kg</string>
+	<string name="units">Units</string>
+	<string name="add_item">Add Item</string>
+	<string name="no_orders_error">Add end edit items that you would like to order</string>
+	<string name="add_items">Add Items</string>
+	<string name="nothing_here_yet">Nothing Here Yet</string>
+
+</resources>
