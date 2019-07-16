@@ -1,3 +1,4 @@
+import com.android.build.gradle.internal.tasks.factory.dependsOn
 import de.mannodermaus.gradle.plugins.junit5.junitPlatform
 import naming.FormatAppName
 import resources.Resources
@@ -165,7 +166,12 @@ configurations.all {
 tasks {
 	val incrementPatchNumber by register("incrementPatchNumber", IncrementPatchNumber::class)
 	val incrementBuildNumber by register("incrementBuildNumber", IncrementBuildNumber::class)
+	val incrementPatchAndBuildNumber by register("incrementPatchAndBuildNumber", IncrementBuildNumber::class).apply {
+		dependsOn(incrementBuildNumber)
+	}
 	
-	val createRelease by register("createRelease", CreateRelease::class)
-	createRelease.dependsOn(incrementBuildNumber,incrementPatchNumber)
+	val createRelease by register("createRelease", CreateRelease::class).apply {
+		dependsOn(incrementPatchAndBuildNumber)
+	}
+
 }
