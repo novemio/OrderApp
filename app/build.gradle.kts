@@ -167,5 +167,5 @@ tasks {
 	val incrementBuildNumber by register("incrementBuildNumber", IncrementBuildNumber::class)
 	
 	val createRelease by register("createRelease", CreateRelease::class)
-	createRelease.dependsOn(incrementBuildNumber)
+	createRelease.dependsOn(incrementPatchNumber)
 }
