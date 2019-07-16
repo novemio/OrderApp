@@ -17,7 +17,6 @@ open class CreateRelease : DefaultTask() {
 		description = "CreateRelease"
 		
 		val appVersion = AppVersion(project)
-
 		project.exec {
 			workingDir(project.rootDir)
 			commandLine("./config/release.sh", appVersion.appVersionName, appVersion.appVersionShort)
