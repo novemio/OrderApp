@@ -8,6 +8,6 @@ git checkout -b release/${branch} HEAD
 git checkout release/${branch}
 git add --all
 git commit -m "Bump version to $version"
-git push -u origin release/${branch} -f
+git push -u origin release/${branch}
 
 
