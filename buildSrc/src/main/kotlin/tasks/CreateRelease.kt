@@ -14,10 +14,10 @@ open class CreateRelease : DefaultTask() {
 	
 	@TaskAction
 	fun increment() {
-		description = "Increment version Build Number"
-		val vp = VersionProperties(file)
-		val appVersion = AppVersion(vp)
+		description = "CreateRelease"
 		
+		val appVersion = AppVersion(project)
+
 		project.exec {
 			workingDir(project.rootDir)
 			commandLine("./config/release.sh", appVersion.appVersionName, appVersion.appVersionShort)

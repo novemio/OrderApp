@@ -15,6 +15,7 @@ open class IncrementPatchNumber : DefaultTask() {
 	@TaskAction
 	fun increment() {
 		description = "Increment version Patch Number"
+		println("-------------------$description------------------------")
 		val vp = VersionProperties(file)
 		vp.apply {
 			println("Increment versionPatch from $versionPatch to ${++versionPatch}")
@@ -27,6 +28,6 @@ open class IncrementPatchNumber : DefaultTask() {
 			}
 			saveConfiguration()
 		}
-		
+		println("--------------------------------------------------------")
 	}
 }

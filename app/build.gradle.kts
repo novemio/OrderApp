@@ -165,5 +165,7 @@ configurations.all {
 tasks {
 	val incrementPatchNumber by register("incrementPatchNumber", IncrementPatchNumber::class)
 	val incrementBuildNumber by register("incrementBuildNumber", IncrementBuildNumber::class)
+	
 	val createRelease by register("createRelease", CreateRelease::class)
+	createRelease.dependsOn(incrementBuildNumber)
 }
