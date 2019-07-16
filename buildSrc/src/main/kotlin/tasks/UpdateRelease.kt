@@ -10,8 +10,6 @@ import java.io.File
  * Created by novemio on 7/16/19.
  */
 open class UpdateRelease : DefaultTask() {
-	private val file = File("${project.rootDir}/config/version.properties")
-	
 	@TaskAction
 	fun increment() {
 		description = "UpdateRelease"

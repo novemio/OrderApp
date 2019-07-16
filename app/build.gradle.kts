@@ -5,6 +5,7 @@ import resources.Resources
 import tasks.CreateRelease
 import tasks.IncrementBuildNumber
 import tasks.IncrementPatchNumber
+import tasks.UpdateRelease
 
 plugins {
 	id("com.android.application")
@@ -172,6 +173,10 @@ tasks {
 	
 	val createRelease by register("createRelease", CreateRelease::class).apply {
 		dependsOn(incrementPatchAndBuildNumber)
+	}
+	
+	val updateRelease by register("updateRelease", UpdateRelease::class).apply {
+		dependsOn(incrementBuildNumber)
 	}
 
 }
