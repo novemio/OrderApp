@@ -1,0 +1,88 @@
+/***
+ * Versioning functions
+ */
+
+
+
+
+
+ext.versionMajor = 0
+ext.versionMinor = 0
+ext.versionPatch = 0
+ext.versionRCBuild = 0
+
+def versionPropsFile = rootProject.file('config/version.properties')
+
+
+if (versionPropsFile.canRead()) {
+	Properties versionProps = new Properties()
+	versionProps.load(new FileInputStream(versionPropsFile))
+	ext.versionMajor = versionProps['VERSION_MAJOR'].toInteger()
+	versionMinor = versionProps['VERSION_MINOR'].toInteger()
+	versionBuild = versionProps['VERSION_BUILD'].toInteger()
+	versionPatch = versionProps['VERSION_PATCH'].toInteger()
+} else {
+	throw new FileNotFoundException("Could not read version.properties!")
+}
+
+ext.autoIncrementPatchNumber = {
+
+	if (versionPropsFile.canRead()) {
+		Properties versionProps = new Properties()
+		versionProps.load(new FileInputStream(versionPropsFile))
+		versionPatch = versionProps['VERSION_PATCH'].toInteger() + 1
+		versionProps['VERSION_PATCH'] = versionPatch.toString()
+		versionBuild = 0
+		versionProps['VERSION_BUILD'] = versionBuild.toString()
+		versionProps.store(versionPropsFile.newWriter(), null)
+	} else {
+		throw new FileNotFoundException("Could not read version.properties!")
+	}
+}
+
+
+ext.autoIncrementRCBuildNumber = {
+
+	if (versionPropsFile.canRead()) {
+		Properties versionProps = new Properties()
+		versionProps.load(new FileInputStream(versionPropsFile))
+		versionBuild = versionProps['VERSION_BUILD'].toInteger() + 1
+		versionProps['VERSION_BUILD'] = versionBuild.toString()
+		versionProps.store(versionPropsFile.newWriter(), null)
+	} else {
+		throw new FileNotFoundException("Could not read version.properties!")
+	}
+}
+
+
+
+
+
+
+task increasePatchNumber() {
+	description 'IncreasingPatchNumber'
+	doLast {
+		autoIncrementPatchNumber()
+	}
+}
+
+task increaseBuildNumber() {
+	description 'IncreasingBuildNumber'
+	doLast {
+		autoIncrementBuildNumber()
+	}
+}
+
+ext.appVersionCode = versionMajor * 1000000 + versionMinor * 10000 + versionPatch * 100 - versionBuild
+
+
+ext.appVersionName = "${versionMajor}.${versionMinor}.${versionPatch}.${versionBuild}"
+
+
+
+task showVersionCode {
+
+	doLast {
+		println(appVersionCode)
+	}
+}

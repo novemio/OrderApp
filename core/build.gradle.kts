@@ -75,7 +75,7 @@ dependencies {
 	kapt(Libs.dagger_compiler)
 	
 	//autoValue
-	implementation(Libs.auto_value_annotation)
+	implementation(Libs.auto_value_annotations)
 	kapt(Libs.auto_value)
 	//Moshi
 	implementation(Libs.moshi_kotlin)

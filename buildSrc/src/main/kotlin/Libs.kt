@@ -6,12 +6,10 @@ import kotlin.String
  * Update this file with
  *   `$ ./gradlew buildSrcVersions` */
 object Libs {
-    const val mock: String = "org.mockito:mockito-core:2.23.4"
-	/**
+    /**
      * http://developer.android.com/tools/extras/support-library.html */
     const val appcompat: String = "androidx.appcompat:appcompat:" + Versions.appcompat
 
-    const val stetho : String ="com.facebook.stetho:stetho:1.5.0"
     /**
      * http://developer.android.com/tools/extras/support-library.html */
     const val cardview: String = "androidx.cardview:cardview:" + Versions.cardview
@@ -88,9 +86,12 @@ object Libs {
 
     /**
      * https://github.com/google/auto */
+    const val auto_value_annotations: String = "com.google.auto.value:auto-value-annotations:" +
+            Versions.auto_value_annotations
+
+    /**
+     * https://github.com/google/auto */
     const val auto_value: String = "com.google.auto.value:auto-value:" + Versions.auto_value
-    const val auto_value_annotation: String = "com.google.auto.value:auto-value-annotations:" + Versions
-        .auto_value_annotations
 
     /**
      * https://github.com/google/dagger */
@@ -110,7 +111,8 @@ object Libs {
     /**
      * https://github.com/google/dagger */
     const val dagger: String = "com.google.dagger:dagger:" + Versions.com_google_dagger
-    
+
+    const val google_services: String = "com.google.gms:google-services:" + Versions.google_services
 
     /**
      * https://github.com/square/moshi */

@@ -1,5 +1,9 @@
 import de.mannodermaus.gradle.plugins.junit5.junitPlatform
+import naming.FormatAppName
 import resources.Resources
+import tasks.CreateRelease
+import tasks.IncrementBuildNumber
+import tasks.IncrementPatchNumber
 
 plugins {
 	id("com.android.application")
@@ -45,10 +49,12 @@ android {
 		targetSdkVersion(Config.Android.targetVersion)
 		testInstrumentationRunner = Config.Android.instrumentationRunner
 		testInstrumentationRunnerArgument("runnerBuilder", "de.mannodermaus.junit5.AndroidJUnit5Builder")
-		
 		applicationId = Config.Android.applicationId
-		versionCode = 1
-		versionName = "1.0"
+		Config.Android.versioning(rootProject).run {
+			versionCode = appVersionCode
+			versionName = appVersionName
+		}
+		
 	}
 	buildTypes {
 		getByName("release") {
@@ -66,15 +72,23 @@ android {
 	flavorDimensions("app")
 	productFlavors {
 		create("dev") {
-			setDimension("app")
+			dimension = "app"
 			applicationIdSuffix = ".dev"
 		}
 		
 		
 		create("prod") {
-			setDimension("app")
+			dimension = "app"
 		}
 	}
+	
+	android.applicationVariants.all {
+		FormatAppName.format(this)
+	}
+	//	android.applicationVariants.all { variant ->
+	//		//		FormatAppName.format(variant)
+	//	}
+	
 }
 
 dependencies {
@@ -96,7 +110,6 @@ dependencies {
 	
 	//Stetho
 	
-	implementation(Libs.stetho)
 	//Room database
 	implementation(Libs.room_rxjava2)
 	implementation(Libs.room_runtime)
@@ -120,7 +133,6 @@ dependencies {
 	//Moshi
 	implementation(Libs.moshi_kotlin)
 	kapt(Libs.moshi_kotlin_codegen)
-	
 	
 	//Tests
 	
@@ -148,4 +160,10 @@ dependencies {
 configurations.all {
 	resolutionStrategy.force("org.jetbrains.kotlin:kotlin-reflect:1.3.40")
 	
+}
+
+tasks {
+	val incrementPatchNumber by register("incrementPatchNumber", IncrementPatchNumber::class)
+	val incrementBuildNumber by register("incrementBuildNumber", IncrementBuildNumber::class)
+	val createRelease by register("createRelease", CreateRelease::class)
 }
